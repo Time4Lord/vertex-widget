@@ -115,6 +115,7 @@
             line-height: 1.7;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .description strong {
@@ -235,8 +236,8 @@
         <p class="subheader">Find the right program. Compare countries. Plan your path.</p>
         
         <div class="description">
-            Ask questions like <strong>"Which country offers the best Data Science programs?"</strong> or <strong>"Find AI master's degrees in Germany under €5,000 per year."</strong><br><br>
-            Start exploring your future with AI-powered guidance.
+            Discover and compare master's programs across Europe.<br>
+            Click any suggestion below to get started instantly!
         </div>
 
         <div class="search-wrapper">
@@ -245,10 +246,10 @@
         </div>
 
         <div class="examples">
-            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Which country offers the best AI programs in Europe?'">💻 AI programs in Germany</span>
-            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Find affordable biotechnology master degrees under €3000'">🔬 Affordable biotech degrees</span>
-            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Compare Data Science programs across European universities'">📊 Data Science rankings</span>
-            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'English-taught STEM master programs in Europe'">🌍 English-taught programs</span>
+            <span class="example-chip" onclick="copyToClipboard('Which country offers the best AI programs in Europe?')">💻 AI programs in Germany</span>
+            <span class="example-chip" onclick="copyToClipboard('Find affordable biotechnology master degrees under €3000')">🔬 Affordable biotech degrees</span>
+            <span class="example-chip" onclick="copyToClipboard('Compare Data Science programs across European universities')">📊 Data Science rankings</span>
+            <span class="example-chip" onclick="copyToClipboard('English-taught STEM master programs in Europe')">🌍 English-taught programs</span>
         </div>
 
         <gen-search-widget
@@ -256,5 +257,39 @@
             triggerId="searchWidgetTrigger">
         </gen-search-widget>
     </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Başarılı kopyalama bildirimi
+                const notification = document.createElement('div');
+                notification.textContent = '✓ Copied! Paste it in the search box';
+                notification.style.cssText = `
+                    position: fixed;
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(59, 130, 246, 0.95);
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 12px;
+                    font-weight: 500;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+                    z-index: 1000;
+                    animation: slideUp 0.3s ease-out;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 2000);
+            }).catch(err => {
+                console.error('Kopyalama başarısız:', err);
+                alert('Please manually copy the question');
+            });
+        }
+    </script>
 </body>
 </html>
