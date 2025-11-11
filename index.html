@@ -167,7 +167,7 @@
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: #667eea;
+            color: #3b82f6;
             font-size: 20px;
             pointer-events: none;
         }
@@ -245,10 +245,10 @@
         </div>
 
         <div class="examples">
-            <span class="example-chip">💻 AI programs in Germany</span>
-            <span class="example-chip">🔬 Affordable biotech degrees</span>
-            <span class="example-chip">📊 Data Science rankings</span>
-            <span class="example-chip">🌍 English-taught programs</span>
+            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Which country offers the best AI programs in Europe?'">💻 AI programs in Germany</span>
+            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Find affordable biotechnology master degrees under €3000'">🔬 Affordable biotech degrees</span>
+            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'Compare Data Science programs across European universities'">📊 Data Science rankings</span>
+            <span class="example-chip" onclick="document.getElementById('searchWidgetTrigger').value = 'English-taught STEM master programs in Europe'">🌍 English-taught programs</span>
         </div>
 
         <gen-search-widget
